@@ -1,17 +1,15 @@
-import { resolve, basename } from 'path'
+import { basename, resolve } from 'path'
 import { promises as fs } from 'fs'
 import fg from 'fast-glob'
-import chalk from 'chalk'
 
 async function run() {
   const files = await fg('*.js', {
     ignore: ['chunk-*'],
     absolute: true,
-    cwd: resolve(__dirname, '../dist'),
+    cwd: resolve(__dirname, '../dist')
   })
   for (const file of files) {
     // eslint-disable-next-line no-console
-    console.log(chalk.cyan.inverse(' POST '), `Fix ${basename(file)}`)
     if (file === 'index.js') {
       // fix cjs exports
       let code = await fs.readFile(file, 'utf8')

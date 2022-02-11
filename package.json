@@ -65,7 +65,9 @@
     "test": "vitest"
   },
   "dependencies": {
-    "unplugin": "^0.3.2"
+    "unplugin": "^0.3.2",
+    "@antfu/utils": "^0.4.0",
+    "@rollup/pluginutils": "^4.1.2"
   },
   "devDependencies": {
     "@chris-zhu/eslint-config": "^0.0.5",
