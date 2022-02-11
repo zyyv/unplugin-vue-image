@@ -70,7 +70,7 @@
   "devDependencies": {
     "@chris-zhu/eslint-config": "^0.0.5",
     "@types/node": "^16.7.10",
-    "bumpp": "^6.0.6",
+    "bumpp": "^7.1.1",
     "eslint": "^8.8.0",
     "esno": "^0.9.1",
     "fast-glob": "^3.2.7",
