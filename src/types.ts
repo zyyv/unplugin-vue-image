@@ -11,6 +11,8 @@ export interface ImageResolveResult extends importInfo {}
 
 export type ImageResolverFunction = (name: string) => Awaitable<string | ImageResolveResult | null | undefined | void>
 
+export type Transformer = (code: string, id: string, path: string, query: Record<string, string>) => string
+
 export interface Options {
   /**
     * Rules to include transforming target.

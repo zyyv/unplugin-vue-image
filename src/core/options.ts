@@ -22,6 +22,17 @@ function normalizeResolvers(resolvers: (ImageResolverFunction | ImageResolverFun
   return toArray(resolvers).flat()
 }
 
+export function resovleDtsPath(root: string, dts: string | boolean) {
+  return !dts
+    ? false
+    : resolve(
+      root,
+      typeof dts === 'string'
+        ? dts
+        : 'auto-import-image.d.ts'
+    )
+}
+
 export function resolveOptions(options: Options, root: string): ResolvedOptions {
   const resolved = Object.assign({}, defaultOptions, options) as ResolvedOptions
 
@@ -31,14 +42,7 @@ export function resolveOptions(options: Options, root: string): ResolvedOptions 
 
   resolved.dirs = toArray(resolved.dirs)
 
-  resolved.dts = !resolved.dts
-    ? false
-    : resolve(
-      root,
-      typeof resolved.dts === 'string'
-        ? resolved.dts
-        : 'auto-import-image.d.ts'
-    )
+  resolved.dts = resovleDtsPath(root, resolved.dts)
 
   return resolved
 }
