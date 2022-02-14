@@ -65,9 +65,9 @@
     "test": "vitest"
   },
   "dependencies": {
-    "unplugin": "^0.3.2",
     "@antfu/utils": "^0.4.0",
-    "@rollup/pluginutils": "^4.1.2"
+    "@rollup/pluginutils": "^4.1.2",
+    "unplugin": "^0.3.2"
   },
   "devDependencies": {
     "@chris-zhu/eslint-config": "^0.0.5",
@@ -76,6 +76,7 @@
     "eslint": "^8.8.0",
     "esno": "^0.14.1",
     "fast-glob": "^3.2.7",
+    "local-pkg": "^0.4.1",
     "nodemon": "^2.0.12",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.3",

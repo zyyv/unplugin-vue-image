@@ -1,13 +1,42 @@
-export type ImageResolveResult = string | { path: string }
+import type { Awaitable } from '@antfu/utils'
+import type { FilterPattern } from '@rollup/pluginutils'
 
-export type ImageResolver = (name: string) => ImageResolveResult | null | undefined | void
+export interface importInfo{
+  name?: string
+  importName?: string
+  path: string
+}
+
+export interface ImageResolveResult extends importInfo {}
+
+export type ImageResolverFunction = (name: string) => Awaitable<string | ImageResolveResult | null | undefined | void>
 
 export interface Options {
+  /**
+    * Rules to include transforming target.
+    *
+    * @default [/\.[jt]sx?$/, /\.vue\??/]
+    */
+  include?: FilterPattern
+
+  /**
+     * Rules to exclude transforming target.
+     *
+     * @default [/node_modules/, /\.git/]
+     */
+  exclude?: FilterPattern
+
   /**
    * Relative paths to the directory to search for images.
    * @default 'src/assets/img'
    */
-  dirs?: string[]
+  dirs?: string | string[]
+
+  /**
+   * Search for subdirectories
+   * @default true
+   */
+  deep?: boolean
 
   /**
     * Valid file extensions for images.
@@ -20,7 +49,7 @@ export interface Options {
     *
     * Image names are always in PascalCase
     */
-  resolvers?: ImageResolver[]
+  resolvers?: (ImageResolverFunction | ImageResolverFunction[])[]
 
   /**
     * Custom Regex used to search for variable names.
@@ -35,7 +64,7 @@ export interface Options {
    * Default enabled when `typescript` is installed locally.
    * Set `false` to disable.
    *
-   * @default './auto-imports.d.ts'
+   * @default './auto-import-image.d.ts'
    */
   dts?: string | boolean
 
@@ -47,16 +76,18 @@ export interface Options {
   presetOverriding?: boolean
 
   /**
-    * Rules to include transforming target.
-    *
-    * @default [/\.[jt]sx?$/, /\.vue\??/]
-  //   */
-  // include?: FilterPattern
+   * Apply custom transform over the path for importing
+   */
+  importPathTransform?: (path: string) => string | undefined
+}
 
-  // /**
-  //   * Rules to exclude transforming target.
-  //   *
-  //   * @default [/node_modules/, /\.git/]
-  //   */
-  // exclude?: FilterPattern
+export type ResolvedOptions = Omit<
+Required<Options>,
+'resolvers'|'extensions'|'dirs'
+> & {
+  resolvers: ImageResolverFunction[]
+  extensions: string[]
+  dirs: string[]
+  dts: string | false
+  root: string
 }
