@@ -4,12 +4,10 @@ on:
   push:
     branches:
       - main
-      - master
 
   pull_request:
     branches:
       - main
-      - master
 
 jobs:
   build:
@@ -30,13 +28,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Setup
-        run: npm i -g pnpm @antfu/ni
+        run: npm i -g pnpm
 
       - name: Install
-        run: nci
+        run: pnpm i
 
-      # - name: Lint
-      #   run: nr lint --if-present
+      - name: Lint
+        run: pnpm lint --if-present
 
       - name: Test
-        run: nr test --if-present
+        run: pnpm test --if-present
