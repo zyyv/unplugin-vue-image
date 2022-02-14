@@ -16,12 +16,18 @@ jobs:
         with:
           node-version: '14'
           registry-url: https://registry.npmjs.org/
+
       - run: npm i -g pnpm
+
       - run: pnpm i
+
       - run: pnpm test --if-present
+
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
       - run: npx conventional-github-releaser -p angular
+        continue-on-error: true
         env:
           CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{secrets.GH_TOKEN}}
