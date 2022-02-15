@@ -1,5 +1,5 @@
 import { createUnplugin } from 'unplugin'
-import Context from './core/Context'
+import Context from './core/context'
 import type { ResolvedConfig, ViteDevServer } from 'vite'
 import type { Options } from './types'
 
