@@ -67,7 +67,7 @@
   "dependencies": {
     "@antfu/utils": "^0.5.0",
     "@rollup/pluginutils": "^4.1.2",
-    "unplugin": "^0.4.0"
+    "unplugin": "^0.5.2"
   },
   "devDependencies": {
     "@chris-zhu/eslint-config": "^0.0.5",
