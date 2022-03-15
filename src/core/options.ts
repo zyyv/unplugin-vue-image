@@ -15,7 +15,7 @@ export const defaultOptions: Omit<Required<Options>, 'include' | 'exclude'> = {
   //   dts: '/auto-import-image.d.ts',
   presetOverriding: false,
 
-  importPathTransform: v => v
+  importPathTransform: v => v,
 }
 
 function normalizeResolvers(resolvers: (ImageResolverFunction | ImageResolverFunction[])[]) {
@@ -29,7 +29,7 @@ export function resovleDtsPath(root: string, dts: string | boolean) {
       root,
       typeof dts === 'string'
         ? dts
-        : 'auto-import-image.d.ts'
+        : 'auto-import-image.d.ts',
     )
 }
 

@@ -1,6 +1,5 @@
 import { createUnplugin } from 'unplugin'
 import Context from './core/context'
-import type { ResolvedConfig, ViteDevServer } from 'vite'
 import type { Options } from './types'
 
 export default createUnplugin<Options>((options) => {
@@ -9,6 +8,7 @@ export default createUnplugin<Options>((options) => {
   return {
     name: 'unplugin-vue-image',
     transformInclude(id) {
+      console.log(id)
       return id.endsWith('main.ts')
     },
     transform(code, id) {
@@ -17,15 +17,15 @@ export default createUnplugin<Options>((options) => {
       return result
     },
     vite: {
-      configResolved(config: ResolvedConfig) {
+      configResolved(config: any) {
         ctx.setRoot(config.root)
 
         if (options?.dts)
           ctx.generateDeclaration()
       },
-      configureServer(server: ViteDevServer) {
+      configureServer(server: any) {
         ctx.setupViteServer(server)
-      }
-    }
+      },
+    },
   }
 })

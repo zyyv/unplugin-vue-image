@@ -1,6 +1,6 @@
 {
   "extends": [
-    "@chris-zhu"
+    "@antfu"
   ],
   "rules": {
     "@typescript-eslint/no-unused-vars": [
@@ -8,10 +8,6 @@
       {
         "argsIgnorePattern": "^_"
       }
-    ],
-    "comma-dangle": [
-      2,
-      "never"
     ]
   }
 }

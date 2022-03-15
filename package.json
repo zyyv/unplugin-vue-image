@@ -52,6 +52,9 @@
     "dist",
     "*.d.ts"
   ],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch src",
@@ -70,6 +73,7 @@
     "unplugin": "^0.5.2"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.16.1",
     "@chris-zhu/eslint-config": "^0.0.5",
     "@types/debug": "^4.1.7",
     "@types/node": "^17.0.17",

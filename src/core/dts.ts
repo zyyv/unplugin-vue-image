@@ -19,6 +19,7 @@ declare global {
 
 export {}
 `
-
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   await fs.writeFile(filePath, dtsCode, 'utf-8')
 }

@@ -1,5 +1,5 @@
-import unplugin from '.'
 import type { Options } from './types'
+import unplugin from '.'
 
 export default function(this: any, options: Options) {
   // install webpack plugin
