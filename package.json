@@ -70,7 +70,7 @@
   "dependencies": {
     "@antfu/utils": "^0.5.0",
     "@rollup/pluginutils": "^4.1.2",
-    "unplugin": "^0.5.2"
+    "unplugin": "^0.6.0"
   },
   "devDependencies": {
     "@antfu/ni": "^0.14.0",
