@@ -1,13 +1,5 @@
 {
   "extends": [
     "@antfu"
-  ],
-  "rules": {
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      {
-        "argsIgnorePattern": "^_"
-      }
-    ]
-  }
+  ]
 }

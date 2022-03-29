@@ -59,8 +59,8 @@
     "build": "tsup",
     "dev": "tsup --watch src",
     "build:fix": "esno scripts/postbuild.ts",
-    "lint": "eslint \"{src,test}/**/*.ts\"",
-    "lint:fix": "npm run lint -- --fix",
+    "lint": "eslint .",
+    "lint:fix": "nr lint --fix",
     "play": "npm -C playground run dev",
     "prepublishOnly": "npm run build",
     "release": "bumpp --commit --push --tag && pnpm publish",
@@ -73,8 +73,8 @@
     "unplugin": "^0.5.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.16.1",
-    "@chris-zhu/eslint-config": "^0.0.5",
+    "@antfu/ni": "^0.14.0",
+    "@chris-zhu/eslint-config": "^1.0.0",
     "@types/debug": "^4.1.7",
     "@types/node": "^17.0.17",
     "bumpp": "^7.1.1",
