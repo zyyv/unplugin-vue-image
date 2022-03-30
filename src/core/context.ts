@@ -1,11 +1,11 @@
 import { throttle } from '@antfu/utils'
 import Debug from 'debug'
-import type { ViteDevServer } from 'vite'
-import type { Options, ResolvedOptions } from '../types'
 import { resolveOptions, resovleDtsPath } from './options'
 import { generateDeclaration } from './dts'
 import { parseId } from './utils'
 import transformer from './transform'
+import type { Options, ResolvedOptions } from '../types'
+import type { ViteDevServer } from 'vite'
 
 const debug = {
   components: Debug('unplugin-vue-components:context:components'),

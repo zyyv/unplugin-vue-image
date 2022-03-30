@@ -5,5 +5,9 @@ import Image from 'unplugin-vue-image/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), Inspect(), Image()],
+  plugins: [
+    vue(),
+    Inspect(),
+    Image(),
+  ],
 })

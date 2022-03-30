@@ -8,7 +8,6 @@ export default createUnplugin<Options>((options) => {
   return {
     name: 'unplugin-vue-image',
     transformInclude(id) {
-      console.log(id)
       return id.endsWith('main.ts')
     },
     transform(code, id) {
