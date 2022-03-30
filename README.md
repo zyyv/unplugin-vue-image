@@ -67,8 +67,8 @@ export default {
 module.exports = {
   /* ... */
   plugins: [
-    require('unplugin-vue-image/webpack')({ /* options */ })
-  ]
+    require('unplugin-vue-image/webpack')({ /* options */ }),
+  ],
 }
 ```
 
