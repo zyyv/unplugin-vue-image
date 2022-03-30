@@ -1,7 +1,7 @@
 import Debug from 'debug'
 import type { Transformer } from '../types'
 
-const debug = Debug('unplugin-vue-images:transfrom')
+const debug = Debug('unplugin-vue-image:transfrom')
 
 const transformer: Transformer = (ctx) => {
   return (code, id, path, query) => {

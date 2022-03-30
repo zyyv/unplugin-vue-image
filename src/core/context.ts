@@ -5,13 +5,13 @@ import { resolveOptions, resovleDtsPath } from './options'
 import { generateDeclaration as gtDeclaration } from './dts'
 import { parseId } from './utils'
 import transformer from './transform'
-import type { Options, ResolvedOptions } from '../types'
 import type { ViteDevServer } from 'vite'
+import type { Options, ResolvedOptions } from '../types'
 
 const debug = {
-  search: Debug('unplugin-vue-images:context:search'),
-  hmr: Debug('unplugin-vue-images:context:hmr'),
-  decleration: Debug('unplugin-vue-images:decleration'),
+  search: Debug('unplugin-vue-image:context:search'),
+  hmr: Debug('unplugin-vue-image:context:hmr'),
+  decleration: Debug('unplugin-vue-image:decleration'),
 }
 
 export default class Context {
@@ -23,6 +23,7 @@ export default class Context {
 
   constructor(private rawOptions: Options = {}) {
     this.options = resolveOptions(rawOptions, this.root)
+    debug.search('options', this.options)
     this.generateDeclaration = throttle(500, false, this.generateDeclaration.bind(this))
   }
 
@@ -63,6 +64,7 @@ export default class Context {
 
   setupViteServer(server: ViteDevServer) {
     this._server = server
+
     //   server.watcher
     //     .on('add', (path) => {
     //       const relPath = appRelativePath(path, this.root)

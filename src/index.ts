@@ -1,4 +1,5 @@
 import { createUnplugin } from 'unplugin'
+import { MODULE_NAME } from './core/constants'
 import Context from './core/context'
 import type { Options } from './types'
 
@@ -6,7 +7,7 @@ export default createUnplugin<Options>((options) => {
   const ctx = new Context(options)
 
   return {
-    name: 'unplugin-vue-image',
+    name: MODULE_NAME,
     // transformInclude(id) {
     //   return id.endsWith('main.ts')
     // },
