@@ -4,7 +4,7 @@ import { isPackageExists } from 'local-pkg'
 import type { ImageResolverFunction, Options, ResolvedOptions } from '../types'
 
 export const defaultOptions: Omit<Required<Options>, 'include' | 'exclude'> = {
-  dirs: 'src/assets/img',
+  dirs: 'src/assets/images',
   extensions: ['jpg', 'jpeg', 'png', 'svg', 'webp'],
 
   deep: true,

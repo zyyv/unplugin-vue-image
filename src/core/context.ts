@@ -1,23 +1,22 @@
 import { throttle } from '@antfu/utils'
 import Debug from 'debug'
+import fg from 'fast-glob'
 import { resolveOptions, resovleDtsPath } from './options'
-import { generateDeclaration } from './dts'
+import { generateDeclaration as gtDeclaration } from './dts'
 import { parseId } from './utils'
 import transformer from './transform'
 import type { Options, ResolvedOptions } from '../types'
 import type { ViteDevServer } from 'vite'
 
 const debug = {
-  components: Debug('unplugin-vue-components:context:components'),
-  search: Debug('unplugin-vue-components:context:search'),
-  hmr: Debug('unplugin-vue-components:context:hmr'),
-  decleration: Debug('unplugin-vue-components:decleration'),
-  env: Debug('unplugin-vue-components:env'),
+  search: Debug('unplugin-vue-images:context:search'),
+  hmr: Debug('unplugin-vue-images:context:hmr'),
+  decleration: Debug('unplugin-vue-images:decleration'),
 }
 
 export default class Context {
   options: ResolvedOptions
-
+  private _serached = false
   root = process.cwd()
 
   private _server: ViteDevServer | undefined
@@ -29,7 +28,23 @@ export default class Context {
 
   transform(code: string, id: string) {
     const { path, query } = parseId(id)
-    return transformer(code, id, path, query)
+    return transformer(this)(code, id, path, query)
+  }
+
+  async searchGlob() {
+    if (this._serached) return
+
+    const root = this.options.root
+    const globs = this.options.dirs.map(d => `${d}/**/*.${this.options.extensions.join(',')}`)
+    const files = await fg(globs, {
+      ignore: ['**/node_modules/**'],
+      onlyFiles: true,
+      cwd: root,
+    })
+
+    debug.search('searching', globs, files)
+
+    this._serached = true
   }
 
   setRoot(root: string) {
@@ -43,7 +58,7 @@ export default class Context {
       return
 
     debug.decleration('generating')
-    generateDeclaration(this, this.options.dts)
+    gtDeclaration(this, this.options.dts)
   }
 
   setupViteServer(server: ViteDevServer) {

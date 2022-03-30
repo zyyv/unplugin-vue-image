@@ -65,7 +65,8 @@
     "prepublishOnly": "npm run build",
     "release": "bumpp --commit --push --tag && pnpm publish",
     "start": "esno src/index.ts",
-    "test": "vitest"
+    "test": "vitest",
+    "test:update": "vitest -u"
   },
   "dependencies": {
     "@antfu/utils": "^0.5.0",

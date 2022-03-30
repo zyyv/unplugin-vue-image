@@ -1,3 +1,4 @@
+import type Context from './core/context'
 import type { Awaitable } from '@antfu/utils'
 import type { FilterPattern } from '@rollup/pluginutils'
 
@@ -11,7 +12,7 @@ export interface ImageResolveResult extends importInfo {}
 
 export type ImageResolverFunction = (name: string) => Awaitable<string | ImageResolveResult | null | undefined | void>
 
-export type Transformer = (code: string, id: string, path: string, query: Record<string, string>) => string
+export type Transformer = (ctx: Context) => (code: string, id: string, path: string, query: Record<string, any>) => string
 
 export interface Options {
   /**

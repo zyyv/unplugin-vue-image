@@ -7,24 +7,24 @@ export default createUnplugin<Options>((options) => {
 
   return {
     name: 'unplugin-vue-image',
-    transformInclude(id) {
-      return id.endsWith('main.ts')
-    },
+    // transformInclude(id) {
+    //   return id.endsWith('main.ts')
+    // },
     transform(code, id) {
       const result = ctx.transform(code, id)
       ctx.generateDeclaration()
       return result
     },
     vite: {
-      configResolved(config: any) {
-        ctx.setRoot(config.root)
+      // configResolved(config: any) {
+      //   ctx.setRoot(config.root)
 
-        if (options?.dts)
-          ctx.generateDeclaration()
-      },
-      configureServer(server: any) {
-        ctx.setupViteServer(server)
-      },
+      //   if (options?.dts)
+      //     ctx.generateDeclaration()
+      // },
+      // configureServer(server: any) {
+      //   ctx.setupViteServer(server)
+      // },
     },
   }
 })
