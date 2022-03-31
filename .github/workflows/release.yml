@@ -10,18 +10,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 6.32.1
+
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
 
-      - run: npm i
-      - run: npm run lint
-      - run: npm run test
+      - name: Install
+        run: pnpm i
 
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Test
+        run: pnpm run test
 
       - run: npx conventional-github-releaser -p angular
         continue-on-error: true

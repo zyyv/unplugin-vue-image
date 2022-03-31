@@ -1,6 +1,6 @@
 {
   "name": "unplugin-vue-image",
-  "version": "0.1.12",
+  "version": "0.1.5",
   "description": "Register global imports on demand for Vite and Webpack",
   "keywords": [
     "unplugin",
@@ -63,7 +63,7 @@
     "lint:fix": "nr lint --fix",
     "play": "npm -C playground run dev",
     "prepublishOnly": "npm run build",
-    "release": "bumpp --commit --push --tag",
+    "release": "bumpp --commit --push --tag && pnpm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
     "test:update": "vitest -u"
@@ -77,7 +77,6 @@
     "unplugin": "^0.6.0"
   },
   "devDependencies": {
-    "@antfu/ni": "^0.14.0",
     "@chris-zhu/eslint-config": "^1.0.0",
     "@types/debug": "^4.1.7",
     "@types/node": "^17.0.23",
