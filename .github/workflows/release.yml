@@ -19,9 +19,9 @@ jobs:
 
       - run: pnpm i
 
-      - run: pnpm test --if-present
+      - run: pnpm run test
 
-      - run: pnpm publish --access public
+      - run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
