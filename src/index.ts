@@ -13,9 +13,9 @@ export default createUnplugin<Options>((options) => {
     // transformInclude(id) {
     //   return id.endsWith('main.ts')
     // },
-    transform(code, id) {
+    async transform(code, id) {
       const result = ctx.transform(code, id)
-      ctx.generateDeclaration()
+      await ctx.generateDeclaration()
       return result
     },
     vite: {

@@ -1,18 +1,11 @@
 import { throttle } from '@antfu/utils'
-import Debug from 'debug'
 import fg from 'fast-glob'
 import { resolveOptions, resovleDtsPath } from './options'
 import { generateDeclaration as gtDeclaration } from './dts'
-import { parseId } from './utils'
+import { debug, getNameByPath, parseId, pascalCase } from './utils'
 import transformer from './transform'
 import type { ViteDevServer } from 'vite'
 import type { Options, ResolvedOptions } from '../types'
-
-const debug = {
-  search: Debug('unplugin-vue-image:context:search'),
-  hmr: Debug('unplugin-vue-image:context:hmr'),
-  decleration: Debug('unplugin-vue-image:decleration'),
-}
 
 export default class Context {
   options: ResolvedOptions
@@ -20,6 +13,7 @@ export default class Context {
   root = process.cwd()
 
   private _server: ViteDevServer | undefined
+  _cache = new Map()
 
   constructor(private rawOptions: Options = {}) {
     this.options = resolveOptions(rawOptions, this.root)
@@ -32,18 +26,22 @@ export default class Context {
     return transformer(this)(code, id, path, query)
   }
 
-  async searchGlob() {
+  searchGlob() {
     if (this._serached) return
 
     const root = this.options.root
-    const globs = this.options.dirs.map(d => `${d}/**/*.${this.options.extensions.join(',')}`)
-    const files = await fg(globs, {
+    const suffix = this.options.extensions.join(',')
+    const globs = this.options.dirs.map(d => `${d}/**/*.{${suffix}}`)
+    const files = fg.sync(globs, {
       ignore: ['**/node_modules/**'],
       onlyFiles: true,
       cwd: root,
     })
 
-    debug.search('searching', globs, files)
+    for (const file of files) {
+      const name = pascalCase(getNameByPath(file, this.options))
+      this._cache.set(name, `/${file}`)
+    }
 
     this._serached = true
   }
@@ -54,12 +52,17 @@ export default class Context {
     this.options.dts = resovleDtsPath(root, this.options.dts)
   }
 
-  generateDeclaration() {
+  async generateDeclaration() {
     if (!this.options.dts)
       return
 
     debug.decleration('generating')
-    gtDeclaration(this, this.options.dts)
+    await gtDeclaration(this, this.options.dts)
+  }
+
+  findPathFromCache(name: string) {
+    if (this._cache.has(name))
+      return this._cache.get(name)
   }
 
   setupViteServer(server: ViteDevServer) {
