@@ -1,4 +1,4 @@
-import { debug, pascalCase, stringifyImageImport } from './utils'
+import { pascalCase, stringifyImageImport } from './utils'
 import type { Transformer } from '../types'
 
 const transformer: Transformer = (ctx) => {
@@ -26,8 +26,6 @@ const transformer: Transformer = (ctx) => {
     })
 
     transformed = `${head.join('\n')}\n${transformed}`
-
-    debug.transform('transform success', transformed)
 
     return transformed
   }
