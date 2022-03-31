@@ -6,23 +6,7 @@ on:
       - 'v*'
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2.2.1
-        with:
-          version: 6.32.1
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: pnpm i
-      - run: pnpm lint
-      - run: pnpm test
-
-  publish:
-    needs: test
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -32,6 +16,9 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - run: npm i
+      - run: npm run lint
+      - run: npm run test
+
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
