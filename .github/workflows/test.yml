@@ -11,30 +11,21 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x]
-        os: [ubuntu-latest, windows-latest, macos-latest]
-      fail-fast: false
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.1
         with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Setup
-        run: npm i -g pnpm
+          version: 6.32.1
 
       - name: Install
         run: pnpm i
 
       - name: Lint
-        run: pnpm lint --if-present
+        run: pnpm run lint
 
       - name: Test
-        run: pnpm test --if-present
+        run: pnpm run test

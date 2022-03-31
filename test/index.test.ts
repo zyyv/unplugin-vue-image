@@ -11,7 +11,8 @@ describe('context describle', () => {
     const id = 'test/index.vue'
     expect(ctx.transform(code, id))
       .toMatchInlineSnapshot(`
-        "<template>
+        "
+        <template>
             <img alt=\\"Vue logo\\" src=\\"./assets/images/logo.png\\">
           </template>"
       `)
