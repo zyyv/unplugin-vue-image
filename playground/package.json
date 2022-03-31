@@ -3,15 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite --open --port=4000",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "dev": "cross-env DEBUG=unplugin-vue-image:* vite --open --port=4000",
+    "build": "cross-env DEBUG=unplugin-vue-image:* vue-tsc --noEmit && vite build"
   },
   "dependencies": {
     "vue": "^3.2.25"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",
+    "cross-env": "^7.0.3",
     "sass": "^1.49.9",
     "unplugin-vue-image": "workspace:*",
     "vue-tsc": "^0.29.8"
