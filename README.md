@@ -2,27 +2,10 @@
 
 [![NPM version](https://img.shields.io/npm/v/unplugin-vue-image?color=a1b858&label=)](https://www.npmjs.com/package/unplugin-vue-image)
 
-Starter template for [unplugin](https://github.com/unjs/unplugin).
-
-## Template Usage
-
-To use this template, clone it down using:
-
-```bash
-npx degit antfu/unplugin-vue-image my-unplugin
-```
-
-And do a global replace of `unplugin-vue-image` with your plugin name.
-
-Then you can start developing your unplugin 🔥
-
-To test your plugin, run: `pnpm run dev`
-To release a new version, run: `pnpm run release`
-
 ## Install
 
 ```bash
-npm i unplugin-vue-image
+npm i unplugin-vue-image -D
 ```
 
 <details>
@@ -105,3 +88,29 @@ module.exports = {
 ```
 
 <br></details>
+
+## Usage
+
+`unplugin-vue-image` auto import your image from `assets/images` by default to your Vue component.
+
+You can only use image variables using camelCase.
+
+```
+--- aseets
+  --- images
+    --- logo.png
+--- App.vue
+```
+
+```vue
+--- src/App.vue ---
+<template>
+  <div>
+    <img :src="Logo">
+  </div>
+</template>
+```
+
+## License
+
+[MIT](./LICENSE)
