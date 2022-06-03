@@ -4,6 +4,7 @@ import { resolveOptions, resovleDtsPath } from './options'
 import { generateDeclaration as gtDeclaration } from './dts'
 import { debug, getNameByPath, parseId, pascalCase } from './utils'
 import transformer from './transform'
+import type fs from 'fs'
 import type { ViteDevServer } from 'vite'
 import type { Options, ResolvedOptions } from '../types'
 
@@ -66,7 +67,30 @@ export default class Context {
   }
 
   setupViteServer(server: ViteDevServer) {
+    if (this._server === server)
+      return
+
     this._server = server
+    this.setupWatcher(server.watcher)
+  }
+
+  setupWatcher(watcher: fs.FSWatcher) {
+    watcher
+      .on('add', (path) => {
+        console.log(path)
+        // const relPath = appRelativePath(path, this.root)
+        // if (fileInDirs(this.dirs, relPath) && hasExtension(path, this.extensions)) {
+        //   this.addImages([relPath])
+        //   this.onUpdate(relPath)
+        // }
+      })
+      .on('unlink', (path) => {
+        console.log(path)
+        // Remove non-app section of path
+        // const relPath = appRelativePath(path, this.root)
+        // if (this.removeImage(relPath))
+        //   this.onUpdate(relPath)
+      })
 
     //   server.watcher
     //     .on('add', (path) => {
