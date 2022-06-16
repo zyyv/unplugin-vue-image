@@ -73,7 +73,7 @@
     "@rollup/pluginutils": "^4.2.1",
     "fast-glob": "^3.2.11",
     "local-pkg": "^0.4.1",
-    "unplugin": "^0.6.3"
+    "unplugin": "^0.7.0"
   },
   "devDependencies": {
     "@chris-zhu/eslint-config": "^1.0.5",
