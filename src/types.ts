@@ -86,7 +86,7 @@ export interface Options {
 
 export type ResolvedOptions = Omit<
 Required<Options>,
-'resolvers'|'extensions'|'dirs'
+'resolvers' | 'extensions' | 'dirs'
 > & {
   resolvers: ImageResolverFunction[]
   extensions: string[]

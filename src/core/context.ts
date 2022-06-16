@@ -76,16 +76,16 @@ export default class Context {
 
   setupWatcher(watcher: fs.FSWatcher) {
     watcher
-      .on('add', (path) => {
-        console.log(path)
+      .on('add', (_path) => {
+        // console.log(path)
         // const relPath = appRelativePath(path, this.root)
         // if (fileInDirs(this.dirs, relPath) && hasExtension(path, this.extensions)) {
         //   this.addImages([relPath])
         //   this.onUpdate(relPath)
         // }
       })
-      .on('unlink', (path) => {
-        console.log(path)
+      .on('unlink', (_path) => {
+        // console.log(path)
         // Remove non-app section of path
         // const relPath = appRelativePath(path, this.root)
         // if (this.removeImage(relPath))
