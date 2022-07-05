@@ -1,20 +1,16 @@
 import { describe, expect, it } from 'vitest'
 import Context from '../src/core/context'
 
-describe('context describle', () => {
-  const ctx = new Context()
+const ctx = new Context()
 
+describe('context describle', () => {
   it('trnasform parse', () => {
-    const code = `<template>
-    <img alt="Vue logo" src="./assets/images/logo.png">
-  </template>`
+    const code = 'xxx _ctx.Logo xxx'
     const id = 'test/index.vue'
     expect(ctx.transform(code, id))
       .toMatchInlineSnapshot(`
         "
-        <template>
-            <img alt=\\"Vue logo\\" src=\\"./assets/images/logo.png\\">
-          </template>"
+        xxx _ctx.Logo xxx"
       `)
   })
 })

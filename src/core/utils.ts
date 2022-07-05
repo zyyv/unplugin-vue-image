@@ -41,8 +41,8 @@ export function getNameByPath(path: string, options: Options) {
   const folders = strippedPath.slice(1).split('/').filter(Boolean)
   let filename = parsedFilePath.name
 
-  if (filename.toLowerCase() === 'index')
-    filename = ''
+  // if (filename.toLowerCase() === 'index')
+  //   filename = ''
 
   if (!isEmpty(folders))
     filename = [...folders, filename].filter(Boolean).join('-')

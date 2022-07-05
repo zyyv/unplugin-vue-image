@@ -1,10 +1,9 @@
 import { promises as fs } from 'fs'
 import { MODULE_NAME } from './constants'
-import { debug } from './utils'
 import type Context from './Context'
 
 export async function generateDeclaration(ctx: Context, filePath: string) {
-  debug.log(ctx._cache)
+  // TODO generate declaration for used images not in cache
 
   const body = Array.from(ctx._cache)
     .sort((a, b) => a[0].localeCompare(b[0]))

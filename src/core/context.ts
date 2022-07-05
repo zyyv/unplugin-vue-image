@@ -57,7 +57,6 @@ export default class Context {
     if (!this.options.dts)
       return
 
-    debug.decleration('generating')
     await gtDeclaration(this, this.options.dts)
   }
 

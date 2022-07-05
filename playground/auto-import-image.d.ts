@@ -6,7 +6,7 @@ declare global {
   const Logo1: typeof import('/src/assets/images/logo1.png')['default']
   const Logo2: typeof import('/src/assets/images/logo2.png')['default']
   const Logo3: typeof import('/src/assets/images/logo3.png')['default']
-  const Logo4: typeof import('/src/assets/images/logo4.png')['default']
+  const TestLogo4: typeof import('/src/assets/images/test/logo4.png')['default']
 }
 
 export {}

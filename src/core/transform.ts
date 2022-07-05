@@ -11,8 +11,8 @@ const transformer: Transformer = (ctx) => {
     const head: string[] = []
     const imgVariavleRE = /_ctx\.([A-Z][a-zA-Z0-9]*)/g
 
-    let transformed = code.replace(imgVariavleRE, (match, name) => {
-      if (name && !name.startsWith('_')) {
+    const transformed = code.replace(imgVariavleRE, (match, name) => {
+      if (name) {
         name = pascalCase(name)
         const path = ctx.findPathFromCache(name)
         if (path) {
@@ -25,9 +25,7 @@ const transformer: Transformer = (ctx) => {
       return match
     })
 
-    transformed = `${head.join('\n')}\n${transformed}`
-
-    return transformed
+    return `${head.join('\n')}\n${transformed}`
   }
 }
 
