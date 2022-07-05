@@ -1,4 +1,4 @@
-# unplugin-vue-image
+# unplugin-vue-image (WIP)
 
 [![NPM version](https://img.shields.io/npm/v/unplugin-vue-image?color=a1b858&label=)](https://www.npmjs.com/package/unplugin-vue-image)
 
