@@ -7,16 +7,17 @@
     "vite",
     "webpack",
     "rollup",
-    "transform"
+    "transform",
+    "image"
   ],
-  "homepage": "https://github.com/antfu/unplugin-starter#readme",
+  "homepage": "https://github.com/chris-zhu/unplugin-vue-image#readme",
   "bugs": {
-    "url": "https://github.com/antfu/unplugin-starter/issues"
+    "url": "https://github.com/chris-zhu/unplugin-vue-image/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antfu/unplugin-starter.git"
+    "url": "git+https://github.com/chris-zhu/unplugin-vue-image.git"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -26,6 +27,23 @@
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     },
+    "./*": "./*",
+    "./nuxt": {
+      "require": "./dist/nuxt.js",
+      "import": "./dist/nuxt.mjs"
+    },
+    "./resolvers": {
+      "require": "./dist/resolvers.js",
+      "import": "./dist/resolvers.mjs"
+    },
+    "./rollup": {
+      "require": "./dist/rollup.js",
+      "import": "./dist/rollup.mjs"
+    },
+    "./types": {
+      "require": "./dist/types.js",
+      "import": "./dist/types.mjs"
+    },
     "./vite": {
       "require": "./dist/vite.js",
       "import": "./dist/vite.mjs"
@@ -34,26 +52,24 @@
       "require": "./dist/webpack.js",
       "import": "./dist/webpack.mjs"
     },
-    "./rollup": {
-      "require": "./dist/rollup.js",
-      "import": "./dist/rollup.mjs"
-    },
-    "./nuxt": {
-      "require": "./dist/nuxt.js",
-      "import": "./dist/nuxt.mjs"
-    },
-    "./types": {
-      "require": "./dist/types.js",
-      "import": "./dist/types.mjs"
-    },
-    "./*": "./*"
+    "./esbuild": {
+      "require": "./dist/esbuild.js",
+      "import": "./dist/esbuild.mjs"
+    }
   },
   "files": [
     "dist",
     "*.d.ts"
   ],
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*"
+      ]
+    }
+  },
   "workspaces": [
-    "packages/*"
+    "playground"
   ],
   "scripts": {
     "build": "tsup && nr build:fix",
