@@ -8,6 +8,7 @@ export const debug = {
   decleration: Debug('unplugin-vue-image:decleration'),
   log: Debug('unplugin-vue-image:log'),
   transform: Debug('unplugin-vue-image:transform'),
+  fs: Debug('unplugin-vue-image:fs'),
 }
 
 export function stringifyImageImport(path: string, name: string) {

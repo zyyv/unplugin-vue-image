@@ -14,12 +14,11 @@ export default class Context {
   root = process.cwd()
 
   private _server: ViteDevServer | undefined
-  _cache = new Map<string, string>() // 目录下文件列表
-  _used = new Map<string, string>() // 使用到的文件
+  _cache = new Map<string, string>()
 
   constructor(private rawOptions: Options = {}) {
     this.options = resolveOptions(rawOptions, this.root)
-    debug.search('options', this.options)
+    // debug.search('options', this.options)
     this.generateDeclaration = throttle(500, false, this.generateDeclaration.bind(this))
   }
 
@@ -62,11 +61,8 @@ export default class Context {
   }
 
   findPathFromCache(name: string): string | undefined {
-    if (this._cache.has(name)) {
-      const path = this._cache.get(name)
-      this._used.set(name, path!)
-      return path
-    }
+    if (this._cache.has(name))
+      return this._cache.get(name)
   }
 
   setupViteServer(server: ViteDevServer) {
@@ -80,34 +76,35 @@ export default class Context {
   setupWatcher(watcher: fs.FSWatcher) {
     watcher
       .on('add', (_path) => {
-        // console.log(path)
-        // const relPath = appRelativePath(path, this.root)
-        // if (fileInDirs(this.dirs, relPath) && hasExtension(path, this.extensions)) {
-        //   this.addImages([relPath])
-        //   this.onUpdate(relPath)
-        // }
+        debug.fs('add', _path)
+
+        const path = _path.slice(this.options.root.length + 1)
+        if (this.options.dirs.some(dir => path.startsWith(dir)) && this.options.extensions.some(ext => path.endsWith(ext))) {
+          this.addImages([path])
+          this.onUpdate(path)
+        }
       })
       .on('unlink', (_path) => {
+        debug.fs('unlink', _path)
+
+        // const path = _path.slice(this.options.root.length + 1)
         // console.log(path)
         // Remove non-app section of path
         // const relPath = appRelativePath(path, this.root)
         // if (this.removeImage(relPath))
         //   this.onUpdate(relPath)
       })
+  }
 
-    //   server.watcher
-    //     .on('add', (path) => {
-    //       const relPath = appRelativePath(path, this.root)
-    //       if (fileInDirs(this.dirs, relPath) && hasExtension(path, this.extensions)) {
-    //         this.addImages([relPath])
-    //         this.onUpdate(relPath)
-    //       }
-    //     })
-    //     .on('unlink', (path) => {
-    //       // Remove non-app section of path
-    //       const relPath = appRelativePath(path, this.root)
-    //       if (this.removeImage(relPath))
-    //         this.onUpdate(relPath)
-    //     })
+  addImages(paths: string[]) {
+
+  }
+
+  removeImages(paths: string[]) {}
+
+  onUpdate(path: string) {
+    if (!this._server) {
+
+    }
   }
 }

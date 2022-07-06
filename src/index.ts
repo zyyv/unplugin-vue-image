@@ -1,7 +1,10 @@
+import { existsSync } from 'fs'
 import { createUnplugin } from 'unplugin'
 import { createFilter } from '@rollup/pluginutils'
+import chokidar from 'chokidar'
 import { MODULE_NAME } from './core/constants'
 import Context from './core/context'
+import { debug } from './core/utils'
 import type { Options } from './types'
 import type { ResolvedConfig, ViteDevServer } from 'vite'
 
@@ -32,8 +35,16 @@ export default createUnplugin<Options>((options = {}) => {
       configResolved(config: ResolvedConfig) {
         ctx.setRoot(config.root)
 
-        if (options.dts)
-          ctx.generateDeclaration()
+        if (ctx.options.dts) {
+          ctx.searchGlob()
+          if (!existsSync(ctx.options.dts))
+            ctx.generateDeclaration()
+        }
+
+        debug.fs('configResolved', ctx.options)
+
+        if (config.build.watch && config.command === 'build')
+          ctx.setupWatcher(chokidar.watch(ctx.options.dirs))
       },
       configureServer(server: ViteDevServer) {
         ctx.setupViteServer(server)

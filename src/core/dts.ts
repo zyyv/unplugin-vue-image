@@ -1,11 +1,9 @@
 import { promises as fs } from 'fs'
 import { MODULE_NAME } from './constants'
-import type Context from './Context'
+import type Context from './context'
 
 export async function generateDeclaration(ctx: Context, filePath: string) {
-  // TODO generate declaration for used images not in cache
-
-  const body = Array.from(ctx._used)
+  const body = Array.from(ctx._cache)
     .sort((a, b) => a[0].localeCompare(b[0]))
     .map(([name, path]) => `  const ${name}: typeof import('${path}')['default']`)
     .join('\n')

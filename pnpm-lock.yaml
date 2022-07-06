@@ -10,6 +10,7 @@ importers:
       '@types/debug': ^4.1.7
       '@types/node': ^18.0.1
       bumpp: ^8.2.1
+      chokidar: ^3.5.3
       debug: ^4.3.4
       eslint: ^8.19.0
       esno: ^0.16.3
@@ -25,6 +26,7 @@ importers:
     dependencies:
       '@antfu/utils': 0.5.2
       '@rollup/pluginutils': 4.2.1
+      chokidar: 3.5.3
       fast-glob: 3.2.11
       local-pkg: 0.4.1
       unplugin: 0.7.1_bcwimvlikb67cugtywnrdg5ffq
