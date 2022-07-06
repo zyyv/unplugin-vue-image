@@ -14,7 +14,8 @@ export default class Context {
   root = process.cwd()
 
   private _server: ViteDevServer | undefined
-  _cache = new Map()
+  _cache = new Map<string, string>() // 目录下文件列表
+  _used = new Map<string, string>() // 使用到的文件
 
   constructor(private rawOptions: Options = {}) {
     this.options = resolveOptions(rawOptions, this.root)
@@ -60,9 +61,12 @@ export default class Context {
     await gtDeclaration(this, this.options.dts)
   }
 
-  findPathFromCache(name: string) {
-    if (this._cache.has(name))
-      return this._cache.get(name)
+  findPathFromCache(name: string): string | undefined {
+    if (this._cache.has(name)) {
+      const path = this._cache.get(name)
+      this._used.set(name, path!)
+      return path
+    }
   }
 
   setupViteServer(server: ViteDevServer) {

@@ -5,7 +5,7 @@ import type Context from './Context'
 export async function generateDeclaration(ctx: Context, filePath: string) {
   // TODO generate declaration for used images not in cache
 
-  const body = Array.from(ctx._cache)
+  const body = Array.from(ctx._used)
     .sort((a, b) => a[0].localeCompare(b[0]))
     .map(([name, path]) => `  const ${name}: typeof import('${path}')['default']`)
     .join('\n')
