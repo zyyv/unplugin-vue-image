@@ -88,23 +88,23 @@
     "@antfu/utils": "^0.5.2",
     "@rollup/pluginutils": "^4.2.1",
     "chokidar": "^3.5.3",
-    "fast-glob": "^3.2.11",
-    "local-pkg": "^0.4.1",
-    "unplugin": "^0.7.1"
+    "fast-glob": "^3.2.12",
+    "local-pkg": "^0.4.2",
+    "unplugin": "^0.9.5"
   },
   "devDependencies": {
     "@chris-zhu/eslint-config": "^1.0.5",
     "@types/debug": "^4.1.7",
-    "@types/node": "^18.0.1",
+    "@types/node": "^18.7.18",
     "bumpp": "^8.2.1",
     "debug": "^4.3.4",
-    "eslint": "^8.19.0",
+    "eslint": "^8.23.1",
     "esno": "^0.16.3",
-    "rollup": "^2.75.7",
-    "tsup": "^6.1.3",
-    "typescript": "^4.7.4",
-    "vite": "^2.9.13",
-    "vite-plugin-inspect": "^0.5.1",
-    "vitest": "^0.17.0"
+    "rollup": "^2.79.0",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.3",
+    "vite": "^3.1.3",
+    "vite-plugin-inspect": "^0.7.2",
+    "vitest": "^0.23.4"
   }
 }

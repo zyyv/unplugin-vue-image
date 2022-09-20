@@ -3,6 +3,11 @@
 declare global {
   const Abc: typeof import('/src/assets/images/abc.png')['default']
   const Logo: typeof import('/src/assets/images/logo.png')['default']
+  const Logo1: typeof import('/src/assets/images/logo1.png')['default']
+  const Logo2: typeof import('/src/assets/images/logo2.png')['default']
+  const Logo3: typeof import('/src/assets/images/logo3.png')['default']
+  const Logo3 copy: typeof import('/src/assets/images/logo3 copy.png')['default']
+  const TestLogo4: typeof import('/src/assets/images/test/logo4.png')['default']
 }
 
 export {}

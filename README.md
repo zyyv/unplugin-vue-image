@@ -111,6 +111,9 @@ You can only use image variables using camelCase.
 </template>
 ```
 
+## Credits
+This plugin was inspired by [vite-plugin-vue-images](https://github.com/sampullman/vite-plugin-vue-images), it's an enhanced version of it.
+
 ## License
 
 [MIT](./LICENSE)
