@@ -12,7 +12,6 @@ export const defaultOptions: Omit<Required<Options>, 'include' | 'exclude'> = {
 
   customSearchRegex: '([a-zA-Z0-9]+)',
   dts: isPackageExists('typescript'),
-  //   dts: '/auto-import-image.d.ts',
   presetOverriding: false,
 
   importPathTransform: v => v,

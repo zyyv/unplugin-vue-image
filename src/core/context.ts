@@ -18,7 +18,6 @@ export default class Context {
 
   constructor(private rawOptions: Options = {}) {
     this.options = resolveOptions(rawOptions, this.root)
-    // debug.search('options', this.options)
     this.generateDeclaration = throttle(500, false, this.generateDeclaration.bind(this))
   }
 

@@ -2,9 +2,7 @@ import { pascalCase, stringifyImageImport } from './utils'
 import type { Transformer } from '../types'
 
 const transformer: Transformer = (ctx) => {
-  return (code, id, path, _query) => {
-    if (!path.endsWith('.vue')) return code
-
+  return (code, _id, _path, _query) => {
     ctx.searchGlob()
 
     let _idx = 0

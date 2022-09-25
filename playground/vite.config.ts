@@ -8,6 +8,8 @@ export default defineConfig({
   plugins: [
     vue(),
     Inspect(),
-    Image(),
+    Image({
+      dts: 'src/auto-import-image.d.ts',
+    }),
   ],
 })
