@@ -79,8 +79,8 @@ export default class Context {
 
         const path = _path.slice(this.options.root.length + 1)
         if (this.options.dirs.some(dir => path.startsWith(dir)) && this.options.extensions.some(ext => path.endsWith(ext))) {
-          this.addImages([path])
-          this.onUpdate(path)
+          // this.addImages([path])
+          // this.onUpdate(path)
         }
       })
       .on('unlink', (_path) => {
@@ -95,15 +95,15 @@ export default class Context {
       })
   }
 
-  addImages(paths: string[]) {
+  // addImages(paths: string[]) {
 
-  }
+  // }
 
-  removeImages(paths: string[]) {}
+  // removeImages(paths: string[]) {}
 
-  onUpdate(path: string) {
-    if (!this._server) {
+  // onUpdate(path: string) {
+  //   if (!this._server) {
 
-    }
-  }
+  //   }
+  // }
 }
