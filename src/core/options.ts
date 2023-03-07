@@ -1,4 +1,4 @@
-import { resolve } from 'path'
+import { resolve } from 'node:path'
 import { toArray } from '@antfu/utils'
 import { isPackageExists } from 'local-pkg'
 import type { ImageResolverFunction, Options, ResolvedOptions } from '../types'

@@ -1,12 +1,12 @@
+import type fs from 'node:fs'
 import { throttle } from '@antfu/utils'
 import fg from 'fast-glob'
+import type { ViteDevServer } from 'vite'
+import type { Options, ResolvedOptions } from '../types'
 import { resolveOptions, resovleDtsPath } from './options'
 import { generateDeclaration as gtDeclaration } from './dts'
 import { debug, getNameByPath, parseId, pascalCase } from './utils'
 import transformer from './transform'
-import type fs from 'fs'
-import type { ViteDevServer } from 'vite'
-import type { Options, ResolvedOptions } from '../types'
 
 export default class Context {
   options: ResolvedOptions
@@ -27,7 +27,8 @@ export default class Context {
   }
 
   searchGlob() {
-    if (this._serached) return
+    if (this._serached)
+      return
 
     const root = this.options.root
     const suffix = this.options.extensions.join(',')

@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs'
+import { promises as fs } from 'node:fs'
 import { MODULE_NAME } from './constants'
 import type Context from './context'
 

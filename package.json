@@ -2,6 +2,15 @@
   "name": "unplugin-vue-image",
   "version": "0.1.6-beta.1",
   "description": "Register global imports on demand for Vite and Webpack",
+  "license": "MIT",
+  "homepage": "https://github.com/chris-zhu/unplugin-vue-image#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chris-zhu/unplugin-vue-image.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chris-zhu/unplugin-vue-image/issues"
+  },
   "keywords": [
     "unplugin",
     "vite",
@@ -10,18 +19,6 @@
     "transform",
     "image"
   ],
-  "homepage": "https://github.com/chris-zhu/unplugin-vue-image#readme",
-  "bugs": {
-    "url": "https://github.com/chris-zhu/unplugin-vue-image/issues"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chris-zhu/unplugin-vue-image.git"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -57,10 +54,9 @@
       "import": "./dist/esbuild.mjs"
     }
   },
-  "files": [
-    "dist",
-    "*.d.ts"
-  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "typesVersions": {
     "*": {
       "*": [
@@ -68,6 +64,10 @@
       ]
     }
   },
+  "files": [
+    "dist",
+    "*.d.ts"
+  ],
   "workspaces": [
     "playground"
   ],
@@ -75,7 +75,7 @@
     "build": "tsup && nr build:fix",
     "dev": "tsup --watch src",
     "build:fix": "esno scripts/postbuild.ts",
-    "lint": "eslint .",
+    "lint": "eslint --cache .",
     "lint:fix": "nr lint --fix",
     "play": "npm -C playground run dev",
     "prepublishOnly": "npm run build",
@@ -89,24 +89,24 @@
     "@rollup/pluginutils": "^5.0.2",
     "chokidar": "^3.5.3",
     "local-pkg": "^0.4.3",
-    "unplugin": "^1.0.1"
+    "unplugin": "^1.1.0"
   },
   "devDependencies": {
-    "@chris-zhu/eslint-config": "^1.0.7",
+    "@antfu/eslint-config": "^0.36.0",
     "@types/debug": "^4.1.7",
     "@types/fs-extra": "^11.0.1",
-    "@types/node": "^18.11.18",
-    "bumpp": "^8.2.1",
+    "@types/node": "^18.14.6",
+    "bumpp": "^9.0.0",
     "debug": "^4.3.4",
-    "eslint": "^8.33.0",
+    "eslint": "^8.35.0",
     "esno": "^0.16.3",
     "fast-glob": "^3.2.12",
     "fs-extra": "^11.1.0",
-    "rollup": "^3.12.1",
-    "tsup": "^6.5.0",
+    "rollup": "^3.18.0",
+    "tsup": "^6.6.3",
     "typescript": "^4.9.5",
-    "vite": "^4.1.1",
+    "vite": "^4.1.4",
     "vite-plugin-inspect": "^0.7.15",
-    "vitest": "^0.28.4"
+    "vitest": "^0.29.2"
   }
 }

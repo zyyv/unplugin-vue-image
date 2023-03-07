@@ -1,12 +1,12 @@
-import { existsSync } from 'fs'
+import { existsSync } from 'node:fs'
 import { createUnplugin } from 'unplugin'
 import { createFilter } from '@rollup/pluginutils'
 import chokidar from 'chokidar'
+import type { ResolvedConfig, ViteDevServer } from 'vite'
 import { MODULE_NAME } from './core/constants'
 import Context from './core/context'
 import { debug } from './core/utils'
 import type { Options } from './types'
-import type { ResolvedConfig, ViteDevServer } from 'vite'
 
 export default createUnplugin<Options>((options = {}) => {
   const filter = createFilter(
@@ -27,7 +27,8 @@ export default createUnplugin<Options>((options = {}) => {
         const result = ctx.transform(code, id)
         await ctx.generateDeclaration()
         return result
-      } catch (e) {
+      }
+      catch (e) {
         this.error(e)
       }
     },

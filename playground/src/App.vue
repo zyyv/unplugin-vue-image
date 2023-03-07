@@ -1,7 +1,7 @@
 <template>
   <div>
     <img alt="Vue logo" src="./assets/images/logo.png">
-    <br/>
+    <br>
     <img alt="Vue logo" :src="Logo">
     <img alt="Vue logo" :src="Abc">
   </div>

@@ -1,5 +1,5 @@
-import { pascalCase, stringifyImageImport } from './utils'
 import type { Transformer } from '../types'
+import { pascalCase, stringifyImageImport } from './utils'
 
 const transformer: Transformer = (ctx) => {
   return (code, _id, _path, _query) => {

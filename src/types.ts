@@ -1,8 +1,8 @@
-import type Context from './core/context'
 import type { Awaitable } from '@antfu/utils'
 import type { FilterPattern } from '@rollup/pluginutils'
+import type Context from './core/context'
 
-export interface importInfo{
+export interface importInfo {
   name?: string
   importName?: string
   path: string
